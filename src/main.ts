@@ -4,14 +4,15 @@ import Swiper from "swiper/bundle";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Item } from "./types";
 
 create_header()
 
 const http = new  MakeRequest()
 
-  const swiper_wrapper:HTMLElement = document.querySelector('.swiper-wrapper')
+  const swiper_wrapper = document.querySelector('.swiper-wrapper') as HTMLDivElement
   
-    const goods = document.querySelector('.goods_popular')
+    const goods = document.querySelector('.goods_popular') as HTMLDivElement
     
   http.getData('/goods')
   .then(res => {
@@ -36,18 +37,19 @@ const http = new  MakeRequest()
   })
   const types = document.querySelectorAll('.type_of_item')
 
-  const pushed = []
-
+  const pushed:Array<Item> = []
+  
   http.getData('/goods')
   .then(res => {
-    res.forEach(item => {
+    res.forEach((item:Item) => {
       if(item.rating >= 4){
         pushed.push(item)
         reload_goods(pushed, goods)
       }
     })
   })
-  types.forEach(elem=> {
+  types.forEach(elem => {
+   const container =  elem  as HTMLDivElement
     http.getData('/goods?type=' + elem.id)
-    .then(res => reload_goods(res, elem))
+    .then(res => reload_goods(res, container))
   } )

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { Item } from "../types"
 import { MakeRequest } from "./http"
 
@@ -123,7 +122,7 @@ export function create_header() {
       http.getData('/goods')
       .then(res => {
         search_results.innerHTML = ''
-        res.forEach(element => {
+        res.forEach((element:any) => {
           if(element.title.toLowerCase().includes(input.value.toLowerCase())){
             if(input.value !== ''){
               const h4 = document.createElement('h4')
@@ -149,7 +148,7 @@ export function create_header() {
      }
 }
 
-export function reload_slides (arr:Array<Item>, place:HTMLElement) {
+export function reload_slides (arr:Array<Item>, place:HTMLDivElement ) {
     
     place.innerHTML = ''
 
@@ -169,12 +168,11 @@ export function reload_slides (arr:Array<Item>, place:HTMLElement) {
     `
     }
 }
-export function reload_goods (arr:Array<Item>, place:HTMLElement) {
+export function reload_goods (arr:Array<Item>, place:HTMLDivElement) {
 
   
-  const korzinka_ids = JSON.parse(localStorage.getItem('korzinka_ids')) || [];
-  const carts_ids = JSON.parse(localStorage.getItem('carts_ids')) || [];
-
+  const korzinka_ids: string[] = JSON.parse(localStorage.getItem('korzinka_ids') ?? "[]")
+   const carts_ids: string[] = JSON.parse(localStorage.getItem('carts_ids') ?? "[]")
     place.innerHTML = ''
   
   for (const item of arr) {

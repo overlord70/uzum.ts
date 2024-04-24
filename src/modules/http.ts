@@ -1,7 +1,8 @@
 import axios from 'axios'
 
+  
 export class MakeRequest {
-    baseURL = import.meta.env.VITE_BASE_URL
+    baseURL = 'http://localhost:8080'
 
     async getData(path:string) {
         try {
@@ -11,7 +12,7 @@ export class MakeRequest {
                 return res.data
             } 
         } catch(e:any) {
-            // alert(e.message)
+            alert(e.message)
             return e
         }
     }

@@ -5,21 +5,21 @@ create_header()
 
 const http = new MakeRequest()
 
-const nothing = document.querySelector('.nothing')
+const nothing = document.querySelector('.nothing') as HTMLDivElement
 
-const korzinka_items = document.querySelector('.korzinka_items')
+const korzinka_items = document.querySelector('.korzinka_items') as HTMLDivElement
 
-const calculator = document.querySelector('.calculator')
+const calculator = document.querySelector('.calculator') as HTMLDivElement
 
-const h1 = document.querySelector('h1')
+const h1 = document.querySelector('h1') as HTMLParagraphElement
 
-const korzinka_ids = JSON.parse(localStorage.getItem('korzinka_ids')) || [];
+const korzinka_ids: string [] = JSON.parse(localStorage.getItem('korzinka_ids') ?? "[]")
 
-const number_of_currency = document.querySelector('.number_of_currency')
+const number_of_currency = document.querySelector('.number_of_currency') as HTMLParagraphElement
 
-const overal = document.querySelector('.overal')
+const overal = document.querySelector('.overal') as HTMLParagraphElement
 
-const discount = document.querySelector('.discount')
+const discount = document.querySelector('.discount') as HTMLParagraphElement
 
 setInterval(() => {
     if(korzinka_ids.length === 0){
@@ -30,7 +30,7 @@ setInterval(() => {
     } else {
         nothing.style.display = 'none'
     }
-    overal.innerHTML = korzinka_ids.length
+    overal.innerHTML = korzinka_ids.length.toString()
 }, 100)
 
 http.getData('/korzinka')
@@ -91,21 +91,21 @@ http.getData('/korzinka')
             localStorage.setItem('korzinka_ids', JSON.stringify(korzinka_ids))
         }
         plusButton.onclick = () => {
-            +numberParagraph.innerHTML++
+            numberParagraph.innerHTML = (parseFloat(numberParagraph.innerHTML) + 1).toString()
             priceSpan.innerHTML = +priceSpan.innerHTML + iterator.price
-            number_of_currency.innerHTML = +number_of_currency.innerHTML + +iterator.price
+            number_of_currency.innerHTML = (parseInt(number_of_currency.innerHTML) + iterator.price).toString()
         }
         minusButton.onclick = () => {
             if(+numberParagraph.innerHTML <= 1){
             itemDiv.remove()
             http.deleteData(`/korzinka/${itemDiv.id}`)
             } else {
-                +numberParagraph.innerHTML--
-                priceSpan.innerHTML -= iterator.price
-                number_of_currency.innerHTML -= `${iterator.price}`
+                numberParagraph.innerHTML = (parseFloat(numberParagraph.innerHTML) - 1).toString()
+                priceSpan.innerHTML = (parseFloat(priceSpan.innerHTML) - iterator.price).toString()
+                number_of_currency.innerHTML = (parseInt(number_of_currency.innerHTML) - iterator.price).toString()
             }
         }
-        discount.innerHTML = +discount.innerHTML + iterator.price - 500
+        discount.innerHTML = (parseFloat(discount.innerHTML) + iterator.price - 500).toString()
         number_of_currency.innerHTML = +number_of_currency.innerHTML + iterator.price
     }
 })

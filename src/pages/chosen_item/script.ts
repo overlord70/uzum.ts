@@ -6,17 +6,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 create_header()
 
-const chosen_item = JSON.parse(localStorage.getItem('chosen_item'))
+const chosen_item:string [] = JSON.parse(localStorage.getItem('chosen_item') ?? "[]")
 
 const http = new MakeRequest()
 
 const inf = document.querySelector('.inf')
 
-const description = document.querySelector('.description p')
+const description = document.querySelector('.description p') as HTMLParagraphElement
 
-const img = document.querySelector('.swiper-wrapper')
+const img = document.querySelector('.swiper-wrapper') as HTMLDivElement
 
-const similar_goods = document.querySelector('.similar_goods')
+const similar_goods = document.querySelector('.similar_goods') as HTMLDivElement
 
 let item_type :any 
 
@@ -33,7 +33,7 @@ http.getData('/goods?id=' + chosen_item)
         const plus = document.createElement('button');
         const img_minus = document.createElement('img');
         const img_plus = document.createElement('img');
-        const span_num = document.createElement('span');
+        const span_num = document.createElement('span') as HTMLSpanElement
         const ponel = document.createElement('div')
         const hr = document.createElement('hr');
         const p = document.createElement('p');
@@ -69,7 +69,7 @@ http.getData('/goods?id=' + chosen_item)
         btns.append(btn_cart, btn_favorites);
         inf?.append(h1, h2, ponel, hr, p, btns);
         // d
-        item.media.forEach(elem => {
+        item.media.forEach((elem:string) => {
             const div = document.createElement('div')
             const img_2 = document.createElement('img')
             div.className = 'swiper-slide'
@@ -80,15 +80,15 @@ http.getData('/goods?id=' + chosen_item)
         description.innerHTML = item.description
         item_type = item.type
         plus.onclick = () => {
-            +span_num.innerHTML++
+            span_num.innerHTML = (parseInt(span_num.innerHTML) + 1).toString();
             span_2.innerHTML = +span_2.innerHTML + item.price
         }
         minus.onclick = () => {
             if(+span_num.innerHTML <= 1){
                 location.assign('/')
             } else {
-                +span_num.innerHTML--
-                span_2.innerHTML -= item.price
+                span_num.innerHTML = (parseFloat(span_num.innerHTML) - 1).toString()
+               span_2.innerHTML = (parseInt(span_2.innerHTML) - item.price).toString()
             }
         }
     }

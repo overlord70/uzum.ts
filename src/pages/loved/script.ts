@@ -5,11 +5,11 @@ create_header()
 
 const http = new MakeRequest()
 
-const nothing = document.querySelector('.nothing')
+const nothing = document.querySelector('.nothing') as HTMLDivElement
 
-const loved_items = document.querySelector('.loved_items')
+const loved_items = document.querySelector('.loved_items') as HTMLDivElement
 
-const h1 = document.querySelector('h1')
+const h1 = document.querySelector('h1') as HTMLParagraphElement
 
 http.getData('/loved')
 .then(res => {
