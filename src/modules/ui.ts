@@ -53,9 +53,9 @@ export function create_header() {
     p_1.innerHTML = '10 товара'
     account.className = 'account'
     katalog.className = 'katalog'
-    search.src = '/public/svg/search.svg'
+    search.src = '/svg/search.svg'
     div_1.className = 'div'
-    img_2.src = '/public/svg/account.svg'
+    img_2.src = '/svg/account.svg'
     search.className = 'search'
     flex_1.className = 'flex'
     input.placeholder = 'Искать товары'
@@ -77,9 +77,9 @@ export function create_header() {
     main.className = 'main'
     p_4.innerHTML = '10 товара'
     div_5.className = 'div'
-    cancel.src = '/public/svg/cancel.svg'
+    cancel.src = '/svg/cancel.svg'
     flex_5.className = 'flex'
-    img.src = '/public/img/logo.png'
+    img.src = '/img/logo.png'
     img.classList.add('logo')
     p_3.innerHTML = '10 товара'
     p_7.innerText = 'Поиск'
@@ -190,7 +190,7 @@ export function reload_goods (arr:Array<Item>, place:HTMLDivElement) {
       item_container.classList.add("item")
       photo_container.classList.add("photo")
       heart_icon.classList.add("heart")
-      heart_icon.src = "/public/svg/heart 1.svg"
+      heart_icon.src = "/svg/heart 1.svg"
       main_image.id = `${item.id}`
       main_image.classList.add("main_img")
       main_image.src = `${item.media[0]}`
@@ -202,7 +202,7 @@ export function reload_goods (arr:Array<Item>, place:HTMLDivElement) {
       price.classList.add("price")
       price.innerHTML = `${item.price} сум` 
       korzina_icon.classList.add("korzina")
-      korzina_icon.src = "/public/svg/korzinka.svg"
+      korzina_icon.src = "/svg/korzinka.svg"
 
       // c
       photo_container.append(heart_icon,  main_image)
@@ -212,22 +212,22 @@ export function reload_goods (arr:Array<Item>, place:HTMLDivElement) {
       // d
     heart_icon.onclick = () => {
       if(carts_ids.includes(`${item.id}`)){
-        heart_icon.src = "/public/svg/heart 1.svg"
+        heart_icon.src = "/svg/heart 1.svg"
         carts_ids.splice(carts_ids.indexOf(`${item.id}`), 1)
         localStorage.setItem('carts_ids', JSON.stringify(carts_ids));
         http.deleteData(`/loved/${item.id}`)
       } else {
         carts_ids.push(`${item.id}`);
         localStorage.setItem('carts_ids', JSON.stringify(carts_ids));
-        heart_icon.src = '/public/svg/liked.svg'
+        heart_icon.src = '/svg/liked.svg'
         http.postData('/loved', item)
       }
     }
       if(carts_ids.includes(main_image.id)) {
-        heart_icon.src = '/public/svg/liked.svg'
+        heart_icon.src = '/svg/liked.svg'
     }
       if(korzinka_ids.includes(main_image.id)) {
-        korzina_icon.src = '/public/svg/basket_active.svg'
+        korzina_icon.src = '/svg/basket_active.svg'
     }
     
     main_image.onclick = () => {
@@ -237,14 +237,14 @@ export function reload_goods (arr:Array<Item>, place:HTMLDivElement) {
 
     korzina_icon.onclick = () => {
       if(korzinka_ids.includes(`${item.id}`)){
-        korzina_icon.src = "/public/svg/korzinka.svg"
+        korzina_icon.src = "/svg/korzinka.svg"
         korzinka_ids.splice(korzinka_ids.indexOf(`${item.id}`), 1)
         localStorage.setItem('korzinka_ids', JSON.stringify(korzinka_ids))
         http.deleteData(`/korzinka/${item.id}`)
       } else {
         korzinka_ids.push(`${item.id}`)
         localStorage.setItem('korzinka_ids', JSON.stringify(korzinka_ids))
-        korzina_icon.src = '/public/svg/basket_active.svg'
+        korzina_icon.src = '/svg/basket_active.svg'
         http.postData('/korzinka', item)
       }
     }

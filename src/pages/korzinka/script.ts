@@ -62,14 +62,14 @@ http.getData('/korzinka')
         panelDiv.classList.add('ponel')
         const minusButton = document.createElement('button')
         const minusImg = document.createElement('img')
-        minusImg.src = '/public/svg/minus.svg'
+        minusImg.src = '/svg/minus.svg'
         minusButton.append(minusImg)
         const numberParagraph = document.createElement('p')
         numberParagraph.classList.add('number')
         numberParagraph.innerHTML = '1'
         const plusButton = document.createElement('button')
         const plusImg = document.createElement('img')
-        plusImg.src = '/public/svg/plus.svg'
+        plusImg.src = '/svg/plus.svg'
         plusButton.append(plusImg)
 
 

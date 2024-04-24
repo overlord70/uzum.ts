@@ -25,49 +25,49 @@ http.getData('/goods?id=' + chosen_item)
 .then(res => {
     for (const item of res) {
         // a
-        const h1 = document.createElement('h1');
-        const h2 = document.createElement('h2');
-        const span = document.createElement('span');
-        const span_2 = document.createElement('span');
-        const minus = document.createElement('button');
-        const plus = document.createElement('button');
-        const img_minus = document.createElement('img');
-        const img_plus = document.createElement('img');
+        const h1 = document.createElement('h1')
+        const h2 = document.createElement('h2')
+        const span = document.createElement('span')
+        const span_2 = document.createElement('span')
+        const minus = document.createElement('button')
+        const plus = document.createElement('button')
+        const img_minus = document.createElement('img')
+        const img_plus = document.createElement('img')
         const span_num = document.createElement('span') as HTMLSpanElement
         const ponel = document.createElement('div')
-        const hr = document.createElement('hr');
-        const p = document.createElement('p');
-        const btns = document.createElement('div');
-        const btn_cart = document.createElement('button');
-        const btn_favorites = document.createElement('button');
+        const hr = document.createElement('hr')
+        const p = document.createElement('p')
+        const btns = document.createElement('div')
+        const btn_cart = document.createElement('button')
+        const btn_favorites = document.createElement('button')
         // b
-        h1.innerHTML = item.title;
-        span_2.innerHTML = `${item.price} `;
+        h1.innerHTML = item.title
+        span_2.innerHTML = `${item.price} `
         h2.innerHTML = 'сум'
-        span.innerHTML = `${item.price} сум`;
-        img_minus.src = '/public/svg/minus.svg'
-        img_plus.src = '/public/svg/plus.svg'
-        span_num.innerHTML = '1';
+        span.innerHTML = `${item.price} сум`
+        img_minus.src = '/svg/minus.svg'
+        img_plus.src = '/svg/plus.svg'
+        span_num.innerHTML = '1'
         p.innerHTML = `Станьте востребованным разработчиком. Вы изучите основы программирования и основные концепции компьютерных наук, цифровые технологии, операционные системы, программное обеспечение, базы данных, системы аналитики, языки программирования и многое другое. Познакомитесь с тестированием и системным анализом. На программе сможете сделать осознанный выбор специализации и технологий, прокачаться в выбранном направлении.`;
-        btn_cart.innerHTML = 'Добавить в корзину';
-        btn_favorites.innerHTML = 'Добавить в избранное';
+        btn_cart.innerHTML = 'Добавить в корзину'
+        btn_favorites.innerHTML = 'Добавить в избранное'
         btn_cart.classList.add('active_btn')
         minus.id =  'minus'
         plus.id =  'plus'
-        span.classList.add('ex-price');
+        span.classList.add('ex-price')
         ponel.classList.add('ponel')
         btns.classList.add('btns')
-        minus.classList.add('symbol');
-        plus.classList.add('symbol');
-        minus.classList.add('active_btn');
+        minus.classList.add('symbol')
+        plus.classList.add('symbol')
+        minus.classList.add('active_btn')
         // c
         h2.prepend(span_2)
-        h2.append( span);
+        h2.append( span)
         minus.append(img_minus)
         plus.append(img_plus)
         ponel.append(minus, span_num, plus)
-        btns.append(btn_cart, btn_favorites);
-        inf?.append(h1, h2, ponel, hr, p, btns);
+        btns.append(btn_cart, btn_favorites)
+        inf?.append(h1, h2, ponel, hr, p, btns)
         // d
         item.media.forEach((elem:string) => {
             const div = document.createElement('div')
