@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"json-server -p 8090 -w db.json\" \"vite\"",
+    "dev": "concurrently \"json-server -p 8080 -w db.json\" \"vite\"",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

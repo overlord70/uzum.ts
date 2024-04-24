@@ -1,0 +1,58 @@
+.item {
+    margin: 0 auto;
+    width: 230px;
+  
+    .photo {
+      position: relative;
+      height: 300px;
+      border-radius: 12px;
+      background-color: rgba(128, 128, 128, 0.27);
+  
+      .heart, .liked_icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+  
+      .main_img {
+        mix-blend-mode: multiply;
+        width: 170px;
+        height: 170px;
+        object-fit: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+      }
+    }
+  
+    .ex_price {
+      text-decoration: line-through;
+      color: rgba(172, 172, 172, 1);
+    }
+  
+    .description {
+      margin-block: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.98px;
+      text-align: left;
+    }
+  
+    .flour {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.98px;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .non_active {
+    display: none;
+  }
+  
+
+  

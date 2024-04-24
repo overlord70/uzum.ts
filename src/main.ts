@@ -12,14 +12,10 @@ const http = new  MakeRequest()
   const swiper_wrapper:HTMLElement = document.querySelector('.swiper-wrapper')
   
     const goods = document.querySelector('.goods_popular')
-    const furniture = document.querySelector('.furniture')
-    const pc = document.querySelector('.pc')
-    const audio = document.querySelector('.audio')
-    const tv = document.querySelector('.tv')
-    const kitchen = document.querySelector('.kitchen')
+    
   http.getData('/goods')
   .then(res => {
-   reload_slides(res.slice(0, 10), swiper_wrapper)
+   reload_slides(res.slice(0, 20), swiper_wrapper)
 
    new Swiper(".mySwiper", {
     spaceBetween: 30,
@@ -37,5 +33,21 @@ const http = new  MakeRequest()
       prevEl: ".swiper-button-prev",
     },
   });
-  reload_goods(res, goods, furniture, pc, audio, tv, kitchen )
   })
+  const types = document.querySelectorAll('.type_of_item')
+
+  const pushed = []
+
+  http.getData('/goods')
+  .then(res => {
+    res.forEach(item => {
+      if(item.rating >= 4){
+        pushed.push(item)
+        reload_goods(pushed, goods)
+      }
+    })
+  })
+  types.forEach(elem=> {
+    http.getData('/goods?type=' + elem.id)
+    .then(res => reload_goods(res, elem))
+  } )

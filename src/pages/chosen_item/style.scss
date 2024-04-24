@@ -1,0 +1,260 @@
+@use '/src/module_scss/header.scss';
+@use '/src/module_scss/goods.scss';
+
+.grid {
+  margin-block: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  .inf {
+    h1 {
+      width: 817px;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 39.2px;
+    }
+
+    h2 {
+      margin-block: 10px;
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 25.47px;
+    }
+
+    .ex-price {
+      margin-left: 10px;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 25.47px;
+      text-decoration: line-through;
+      color: rgba(172, 172, 172, 1);
+    }
+
+    p {
+      width: 500px;
+      height: 133px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19px;
+    }
+
+    .ponel {
+      margin-top: 15px;
+      border: 1px solid black;
+      width: 89px;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 3px;
+
+      .number {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.41px;
+      }
+
+      button {
+        padding-inline: 7px;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 19.41px;
+        background-color: white;
+      }
+    }
+
+    hr {
+      width: 70%;
+      margin-block: 20px;
+    }
+
+    .btns {
+      button {
+        margin: 10px;
+        width: 176px;
+        height: 32px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 15.93px;
+        background-color: white;
+        color: rgba(112, 0, 255, 1);
+        border: 1px solid rgba(112, 0, 255, 1);
+      }
+
+      .active_btn {
+        
+        background: rgba(112, 0, 255, 1);
+        color: white;
+        border: 1px solid rgba(112, 0, 255, 1);
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.description {
+    // text-align: center;
+  h2 {
+    margin-bottom: 10px;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 25.47px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    width: 793px;
+    height: 176px;
+  }
+}
+
+.swiper {
+  width: 500px;
+  height: 300px;
+}
+
+.swiper-slide {
+  img {
+    image-rendering: pixelated;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    margin-inline: 15%;
+    width: 350px;
+    height: 300px;
+  }
+}
+
+.similar_goods {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px 30px;
+}
+
+@media (max-width: 1199.98px) {
+  .grid .inf h1 {
+    width: 600px;
+  }
+
+    .description  {
+        margin-block: 20px;
+        h2, p{
+             height: auto;
+            text-align: center;
+            
+        }
+      }
+
+      .similar_goods{
+        margin: 0 auto;
+        width: 700px;
+        grid-template-columns: repeat(3, 230px);
+        gap: 20px;
+      }
+
+  .swiper {
+    width: 400px;
+    height: 250px;
+  }
+
+  .swiper-slide img {
+    margin-inline: 20%;
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 991.98px) {
+    .grid {
+        flex-direction: column;
+        gap: 30px;
+        .inf{
+            text-align: center;
+            h1{
+                width: 100%;
+                font-size: 24px;
+                line-height: 30px;
+            }  
+            .ponel{
+                margin: 0 auto;
+            }
+            p{
+                width: 100%;
+            }
+            hr{
+                margin: 20px auto;
+            }
+            .btns{
+                margin: 0 auto;
+            }
+        } 
+      }
+  
+  .description p {
+    width: 400px;
+  }
+  
+
+  .swiper {
+    width: 300px;
+    height: 200px;
+  }
+  .swiper-slide img {
+    margin-inline: 20%;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 767.98px) {
+
+  .description p {
+    width: 100%;
+  }
+  .similar_goods{
+    width: 500px;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 230px);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .grid .inf  {
+    h1{
+        font-size: 20px;
+        line-height: 25px;
+    }
+    p{
+        height: 170px;
+    }
+    .btns{
+        button{
+            margin-inline: 0;
+        }
+    }
+  }
+
+  .description p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+
+  .swiper-slide img {
+    margin-inline: 17%;
+  }
+  .similar_goods{
+    width: 250px;
+    grid-template-columns: 1fr;
+  }
+}
+

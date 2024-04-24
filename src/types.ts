@@ -10,3 +10,5 @@ export type Item = {
     salePercentage: number
     isBlackFriday: boolean
 }
+
+
